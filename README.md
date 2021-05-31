@@ -1,20 +1,20 @@
 
-Activity-based model in PTV Visum
+Activity-based modelling in PTV Visum
 ================
 
 ![Example Schedule](docs/schedule_example.png "Example schedule in Visum")
 
 ``ABM-in-Visum`` is a collaborative project initiated by [Swiss Federal Railways (SBB)](https://www.sbb.ch/) and [PTV Group](https://company.ptvgroup.com/).
 
-It provides the core functionality to simulate an *activity-based travel demand model* within the [PTV Visum software](https://www.ptvgroup.com/en/solutions/products/ptv-visum/). In addition to the core functionality, user-specific model implementations (see ``model-contribs``) are given.
+It provides the core functionality to simulate an *activity-based travel demand model* within the [PTV Visum software](https://www.ptvgroup.com/en/solutions/products/ptv-visum/). In addition to the core functionality (see ``engines``), user-specific model implementations (see ``model-contribs``) are given.
 
 
 ## Overview & history
 
-The repository ``ABM-in-Visum`` targets to offer a collection of algorithms and scripts which allow the user to simulate a full activity-based travel demand model within PTV Visum. It needs three main inputs, 1) a synthetic population including a person database and locations where they live as well as where they can perform activities, 2) parameters to simulate the choices (e.g. the probability of performing a work activity), and 3) level of service skim matrices (e.g. travel times for all available modes). The output then is a fully microscopic daily mobility schedule for each person in the synthetic population, which is consistent in time (seconds) and space (x/y-coordinates). The structure of the model allows for being responsive to both socio-demographic changes as well as to changes in the level of service matrices. The resulting schedules can be used for network assignment or also, for agent-based simulation (e.g. using the [MATSim software](https://www.matsim.org/)).
+The repository ``ABM-in-Visum`` targets to offer a collection of algorithms and scripts which allow the user to simulate a full activity-based travel demand model within [PTV Visum](https://www.ptvgroup.com/en/solutions/products/ptv-visum/). It needs three main inputs, 1) a synthetic population including a person database and locations where they live as well as where they can perform activities, 2) parameters to simulate the choices (e.g. the probability of performing a work activity), and 3) level of service skim matrices (e.g. travel times for all available modes). The output then is a fully microscopic daily mobility schedule for each person in the synthetic population, which is consistent in time (seconds) and space (x/y-coordinates). The structure of the model allows for being responsive to both socio-demographic changes as well as to changes in the level of service matrices. The resulting schedules can be used for network assignment or also, for agent-based simulation (e.g. using the [MATSim software](https://www.matsim.org/)).
 
 
-The work on this project started back in 2018 as a collaboration between `Chetan Joshi` from `PTV Group` and `SBB` (`Wolfgang Scherr` and `Patrick Manser`). After SBB released their first fully calibrated activity-based model in 2019, `PTV Group` (initiated and guided by `Klaus Nökel` and `Martin Snethlage`) implemented an efficient data structure for an activity-based demand model in the [PTV Visum software](https://www.ptvgroup.com/en/solutions/products/ptv-visum/), which was released in version 2020. In addition to the data structure, PTV provided the necessary scripts to run a small example within PTV Visum as well as a very efficient solution to simulate the computationally expensive location choice step. 
+The work on this project started back in 2018 as a collaboration between `Chetan Joshi` from `PTV Group` and `SBB` (`Wolfgang Scherr` and `Patrick Manser`). After SBB released their first fully calibrated activity-based model in 2019, `PTV Group` (initiated and guided by `Klaus Nökel` and `Martin Snethlage`) implemented an efficient data structure for an activity-based demand model in the PTV Visum software, which was released in version 2020. In addition to the data structure, PTV provided the necessary scripts to run a small example within PTV Visum as well as a very efficient solution to simulate the computationally expensive location choice step. 
 
 
 ``ABM-in-Visum`` publishes the scripts for both the example model of PTV as well as the large-scale application of SBB (Switzerland scenario with nearly 10Mio. persons and 8'000 traffic zones). The goal is to make the models easy accessible and it opens the possibility to make contributions for every user.
