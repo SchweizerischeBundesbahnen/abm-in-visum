@@ -18,7 +18,7 @@ The funcionality in this repository an be divided into the two components:
 1) ``engines`` - the purpose of this component is having a central place for very general core functionality. For now, it contains:
    - ``location choice engine``:
    - ``simple discrete choice engine``:
-2) ``model-contribs`` - this folder contains user-specific model contributions, which can used as example for different implementations of the core ``engines``: 
+2) ``model-contribs`` - this folder contains user-specific model contributions, which can used as example for different implementations of the core engines: 
    - ``sbb-mobi-plans``:
    - ``ptv-simple-example``: to come...
 
@@ -27,9 +27,9 @@ All scripts rely on having a synthetic population including a person database (w
 
 ## Usage
 
-The usage of the scripts available in this repository requires a license for the [PTV Visum software](https://www.ptvgroup.com/en/solutions/products/ptv-visum/). *PTV Visum* offers the efficient data structures that are necessary to manage, store and visualize activity-based travel demand (released in version 2020).
+The usage of the scripts available in this repository requires a license for the [PTV Visum software](https://www.ptvgroup.com/en/solutions/products/ptv-visum/). PTV Visum offers the efficient data structures that are necessary to manage, store and visualize activity-based travel demand (released in version 2020).
 
-Within the *PTV Visum* software, the procedure sequences allows to execute to provided Python scripts. The following figure shows an example of a complete procedure sequence for a activity-based model (as provided in ``model-contribs/sbb-mobi-plans``):
+Within the PTV Visum software, the procedure sequences allows to execute to provided Python scripts. The following figure shows an example of a complete procedure sequence for a activity-based model (as provided in ``model-contribs/sbb-mobi-plans``):
 ![Procedure Sequence](docs/procedure_sequence_example.png "Example procedure sequence in Visum")
 
 
