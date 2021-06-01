@@ -2,6 +2,9 @@
 Activity-based modelling in PTV Visum
 ================
 
+Note: This repository is work in progress and code documentation is still very sparse. Updates are expected in the coming weeks!
+
+
 ![Example Schedule](docs/schedule_example.png "Example schedule in Visum")
 
 ``ABM-in-Visum`` is a collaborative project initiated by [Swiss Federal Railways (SBB)](https://www.sbb.ch/) and [PTV Group](https://company.ptvgroup.com/).
