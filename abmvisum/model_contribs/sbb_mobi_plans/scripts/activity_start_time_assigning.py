@@ -24,6 +24,6 @@ importlib.reload(simulator)
 if __name__ == '__main__':
     start_logging()
 
-    abm_simulation = simulator.MOBiPlansSimulator(Visum=Visum)
+    abm_simulation = simulator.MOBiPlansSimulator(Visum=Visum, add_skims_to_cache=False)
 
     abm_simulation.start_time_choice()

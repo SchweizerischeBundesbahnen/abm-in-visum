@@ -21,7 +21,7 @@ importlib.reload(choice_engine)
 
 
 class MOBiPlansSimulator(StreamHandler):
-    def __init__(self, Visum, seed_val=42):
+    def __init__(self, Visum, seed_val=42, add_skims_to_cache=True):
         self.Visum = Visum
         self.rand = np.random.RandomState(seed_val)
 
@@ -30,7 +30,7 @@ class MOBiPlansSimulator(StreamHandler):
         logger.addHandler(self)
 
         logging.info('--- initialize data and config ---')
-        self.initialize_data_and_config()
+        self.initialize_data_and_config(add_skims_to_cache)
 
     def emit(self, record):
         try:
@@ -39,7 +39,7 @@ class MOBiPlansSimulator(StreamHandler):
         except:
             pass
 
-    def initialize_data_and_config(self):
+    def initialize_data_and_config(self, add_skims_to_cache=True):
         # initialize all filters
         self.Visum.Filters.InitAll()
 
@@ -48,7 +48,7 @@ class MOBiPlansSimulator(StreamHandler):
         self.zoneNo_to_zoneInd = dict(zip(self.zones, range(len(self.zones))))
 
         # init config
-        self.config = Config(self.Visum, logging)
+        self.config = Config(self.Visum, logging, add_skims_to_cache)
 
     def long_term_location_choice(self, cache=None, use_IPF=True, accsib_multimodal_attribute='accsib_mul'):
         logging.info('--- location choice ---')
