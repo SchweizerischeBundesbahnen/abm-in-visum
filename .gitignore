@@ -1,0 +1,7 @@
+/.idea/
+*.iml
+/output/
+/__pychache__/
+/tests/tmp/
+*.pyc
+*.log
