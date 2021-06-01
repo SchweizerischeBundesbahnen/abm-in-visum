@@ -36,8 +36,8 @@ def create_trips(Visum, filtered_persons, filtered_tours, rand, logging):
                                                                           primLocZoneNoAttr), dtype=np.int)
 
     long_term_choices = np.array(persons.GetFilteredSet("[active]=1").
-            GetMultipleAttributes(['Concatenate:LongTermChoices\\ActivityCode',
-                                   'Concatenate:LongTermChoices\\LocationNo']))
+                                 GetMultipleAttributes(['Concatenate:LongTermChoices\\ActivityCode',
+                                                        'Concatenate:LongTermChoices\\LocationNo']))
     major_act_locations = {}
     for prim_act in activity_ids_of_primary_tours:
         major_act_locations[activityID_to_activityCode[prim_act]] = np.zeros(long_term_choices.shape[0])
@@ -188,6 +188,9 @@ def create_trips(Visum, filtered_persons, filtered_tours, rand, logging):
 
         global_actEx_keys += [(0, person_no, 1)] * len(actEx_activityCodes)
         global_actEx_activityCodes += actEx_activityCodes
+
+    if len(global_actEx_keys) == 0:
+        return
 
     logging.info('create %d activity executions...' % len(global_actEx_keys))
     logging.info('set activity execution attributes...')

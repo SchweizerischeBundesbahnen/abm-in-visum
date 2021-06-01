@@ -1,6 +1,6 @@
 import logging
 
-import abminvisum.engines.choice_engine as choice_engine
+import abmvisum.engines.choice_engine as choice_engine
 
 
 def run_tour_frequency_choice(Visum, rand, filtered_persons, segments, is_primary):

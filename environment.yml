@@ -1,4 +1,4 @@
-name: abminvisum
+name: abmvisum
 channels:
   - defaults
   - conda-forge

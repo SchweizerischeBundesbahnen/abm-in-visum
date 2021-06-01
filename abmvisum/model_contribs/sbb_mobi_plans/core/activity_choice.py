@@ -1,5 +1,5 @@
-import abminvisum.engines.choice_engine as choice_engine
-import abminvisum.tools.utilities as utilities
+import abmvisum.engines.choice_engine as choice_engine
+import abmvisum.tools.utilities as utilities
 
 
 def run_activity_choice(segments, Visum, active_act_ex, rand, logging):
@@ -10,6 +10,9 @@ def run_activity_choice(segments, Visum, active_act_ex, rand, logging):
 
         segment_filter = segment['Filter'].replace('_P_', 'Schedule\\Person')
         filtered_actExs = active_act_ex.GetFilteredSet(segment_filter)
+
+        if filtered_actExs.Count == 0:
+            continue
 
         segment_attr_expression = [expr.replace('_P_', 'Schedule\\Person') for expr in segment['AttrExpr']]
         chosen_act_ids = choice_engine.calc_probabilistic_choice_per_subject(filtered_actExs, segment_attr_expression,

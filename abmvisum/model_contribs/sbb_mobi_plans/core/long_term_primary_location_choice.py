@@ -4,9 +4,9 @@ import VisumPy.helpers as VPH
 import dask.array as da
 import numpy as np
 
-import abminvisum.engines.choice_engine as choice_engine
-import abminvisum.engines.location_choice_engine as location_choice_engine
-import abminvisum.tools.utilities as utilities
+import abmvisum.engines.choice_engine as choice_engine
+import abmvisum.engines.location_choice_engine as location_choice_engine
+import abmvisum.tools.utilities as utilities
 from .facility_choice import prepare_choice_probs_for_act_id, choose_facilities
 
 daskfactory = choice_engine.DaskFactory(10000)

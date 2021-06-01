@@ -13,6 +13,6 @@ setup(
     long_description=open('README.md').read(),
     author='Swiss Federal Railyways, PTV Group',
     author_email='patrick.manser@sbb.com',
-    packages=['abminvisum'],
+    packages=['abmvisum'],
     install_requires=requirements,
 )

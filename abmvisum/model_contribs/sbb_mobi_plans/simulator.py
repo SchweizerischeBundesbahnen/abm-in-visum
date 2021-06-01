@@ -5,8 +5,8 @@ import importlib
 import numpy as np
 import pandas as pd
 
-import abminvisum.engines.choice_engine as choice_engine
-import abminvisum.tools.utilities as utilities
+import abmvisum.engines.choice_engine as choice_engine
+import abmvisum.tools.utilities as utilities
 from .config import Config
 from .core.activity_choice import run_activity_choice
 from .core.combined_destination_and_duration_choice import run_combined_destination_and_duration_choice

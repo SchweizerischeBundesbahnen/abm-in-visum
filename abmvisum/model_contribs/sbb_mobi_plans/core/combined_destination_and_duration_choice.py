@@ -3,8 +3,8 @@ import numpy as np
 
 from .activity_duration_choice import choose_activity_durations
 from .facility_choice import prepare_choice_probs_for_act_id, choose_facilities
-import abminvisum.engines.location_choice_engine as location_choice_engine
-import abminvisum.tools.utilities as utilities
+import abmvisum.engines.location_choice_engine as location_choice_engine
+import abmvisum.tools.utilities as utilities
 
 
 def run_combined_destination_and_duration_choice(matrix_cache, Visum, filtered_act_ex, filtered_trips, skims,

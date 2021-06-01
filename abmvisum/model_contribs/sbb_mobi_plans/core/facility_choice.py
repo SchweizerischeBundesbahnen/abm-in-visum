@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-import abminvisum.engines.choice_engine as choice_engine
+import abmvisum.engines.choice_engine as choice_engine
 
 daskfactory = choice_engine.DaskFactory(10000)
 

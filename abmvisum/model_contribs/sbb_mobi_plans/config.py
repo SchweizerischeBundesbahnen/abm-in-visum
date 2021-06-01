@@ -3,7 +3,7 @@ import collections
 import VisumPy.helpers as VPH
 import numpy as np
 
-import abminvisum.tools.utilities as utilities
+import abmvisum.tools.utilities as utilities
 from .matrix_cache import MatrixCache
 
 

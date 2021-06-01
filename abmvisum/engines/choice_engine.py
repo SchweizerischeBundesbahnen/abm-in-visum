@@ -3,7 +3,7 @@ import logging
 import dask.array as da
 import numpy as np
 
-import abminvisum.tools.utilities as utilities
+import abmvisum.tools.utilities as utilities
 
 
 class DaskFactory:

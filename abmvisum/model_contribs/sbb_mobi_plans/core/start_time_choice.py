@@ -3,8 +3,8 @@ import operator
 
 import numpy as np
 
-import abminvisum.tools.utilities as utilities
-from abminvisum.engines.choice_engine import Choice2D
+import abmvisum.tools.utilities as utilities
+from abmvisum.engines.choice_engine import Choice2D
 
 
 def run_start_time_choice(segments, visum_com, logging, rand):

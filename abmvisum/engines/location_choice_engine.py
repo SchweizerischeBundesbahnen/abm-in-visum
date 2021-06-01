@@ -1,8 +1,8 @@
 import dask.array as da
 import numpy as np
 
-import abminvisum.engines.choice_engine as choice_engine
-import abminvisum.tools.utilities as utilities
+import abmvisum.engines.choice_engine as choice_engine
+import abmvisum.tools.utilities as utilities
 
 daskfactory = choice_engine.DaskFactory(10000)
 

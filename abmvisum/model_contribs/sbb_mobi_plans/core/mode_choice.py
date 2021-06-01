@@ -1,7 +1,7 @@
 import numpy as np
 
-import abminvisum.tools.utilities as utilities
-from abminvisum.engines.choice_engine import Choice2D
+import abmvisum.tools.utilities as utilities
+from abmvisum.engines.choice_engine import Choice2D
 
 
 def run_mode_choice(v, config, zoneNo_to_zoneInd, logging, rand):
@@ -193,6 +193,10 @@ def calc_util_matrix(non_subt_trips, to_act_codes, from_act_zone_id, to_act_zone
         nb_subt_trips = subt_d_seg_trips[__subt_mask].shape[0]
         nb_tot_subt_trips += nb_subt_trips
         subt_temp_mode_utils = np.zeros((nb_subt_trips, len(modeInd_to_modeName)), dtype=float)
+
+        if nb_non_subt_trips == 0:
+            continue
+
         for mode_ind, (mode, util_formulation) in enumerate(imp_para_values[1]):
             if util_formulation != '-9999':
                 mode_util_mat = utilities.calc_utils_for_matr_expr(config.skim_matrices, util_formulation)

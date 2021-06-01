@@ -7,8 +7,8 @@ from dask.distributed import Client
 HOME_DIR = Path(__file__).parent.parent.parent.parent.parent
 sys.path.append(str(HOME_DIR))
 
-import abminvisum.model_contribs.sbb_mobi_plans.simulator as simulator
-from abminvisum.tools.utilities import start_logging
+import abmvisum.model_contribs.sbb_mobi_plans.simulator as simulator
+from abmvisum.tools.utilities import start_logging
 
 time_budget_dict = {0: {'performing_budget': 14.0,
                         'travel_time_budget': 12.0,
