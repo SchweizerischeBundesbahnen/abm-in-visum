@@ -53,7 +53,7 @@ We are very happy to include any motivated collaborator. Just `clone` or `fork` 
 - PTV Visum Webinar: [Activity Based Modelling with PTV Visum](https://www.youtube.com/watch?v=HvxDVKPmS-s)
 - Scherr, W., Manser, P., Joshi, C., Frischknecht, N., & Métrailler, D. (2020). Towards agent-based travel demand simulation across all mobility choices – the role of balancing preferences and constraints. *European Journal of Transport and Infrastructure Research*, 20(4), 152-172. (https://doi.org/10.18757/ejtir.2020.20.4.4463).
 - Scherr, W., Manser, P., Bützberger, P. (2020). SIMBA MOBI: Microscopic Mobility Simulation for Corporate Planning. *Transportation Research Procedia*, 49, 30-43. (https://doi.org/10.1016/j.trpro.2020.09.004).
-- Hillel T., Pougala, J., Manser, P., Luethi, R., Scherr,  W., Bierlaire, Michel (2020). odelling mobility tool availability at a household and  individual level; A case study of Switzerland. *Proceedings of the 9th Symposium of the European  Association for Research in Transportation (HEART)*. (https://transp-or.epfl.ch/heart/2020/abstracts/HEART_2020_paper_138.pdf)
+- Hillel T., Pougala, J., Manser, P., Luethi, R., Scherr,  W., Bierlaire, Michel (2020). odelling mobility tool availability at a household and  individual level; A case study of Switzerland. *Proceedings of the 9th Symposium of the European  Association for Research in Transportation (HEART)*. (https://transp-or.epfl.ch/heart/2020/abstracts/HEART_2020_paper_138.pdf).
 
 
 
