@@ -18,7 +18,7 @@ The repository ``ABM-in-Visum`` targets to offer a collection of algorithms and 
 The work on this project started back in 2018 as a collaboration between `Chetan Joshi` from `PTV Group` and `SBB` (`Wolfgang Scherr` and `Patrick Manser`). After SBB released their first fully calibrated activity-based model in 2019, `PTV Group` (initiated and guided by `Klaus Nökel` and `Martin Snethlage`) implemented an efficient data structure for an activity-based demand model in the PTV Visum software, which was released in version 2020. In addition to the data structure, PTV offers the necessary scripts to run a small example within PTV Visum as well as an efficient solution to simulate the computationally expensive location choice step.
 
 
-``ABM-in-Visum`` publishes the scripts and algorithms which are used in the example model of PTV and the large-scale application of SBB (Switzerland scenario with nearly 10Mio. persons and 8'000 traffic zones). Not published are parameters and inputs of SBBs' model. The goal is to make the models more accessible and it opens the possibility to make contributions for every user.
+``ABM-in-Visum`` publishes the scripts and algorithms which are used in the example model of PTV and the large-scale application of SBB. Not published are parameters and inputs of SBBs' model. The goal is to make the models more accessible and it opens the possibility to make contributions for every user.
 
 
 ## Functionality
