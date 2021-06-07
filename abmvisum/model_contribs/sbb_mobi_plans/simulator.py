@@ -17,10 +17,29 @@ from .core.start_time_choice import run_start_time_choice
 from .core.tour_frequency_choice import run_tour_frequency_choice
 from .matrix_cache import MatrixCache
 
-importlib.reload(choice_engine)
+importlib.reload(choice_engine)  # prevents Visum from caching methods
 
 
 class MOBiPlansSimulator(StreamHandler):
+    """
+        MOBiPlansSimulator is the central simulator class for an activity-based model. With the initialization, it
+        loads all necessary parameters which are stored within Visum. It provides all methods to generate
+        activity-based travel demand for all persons of a synthetic population as stored in the Persons list
+        in Visum.
+
+        Parameters:
+            Visum: Instance of the PTV Visum software.
+            seed_val (int): Fixes the random seed to this number.
+            add_skims_to_cache: Possibility to load all skim matrices as defined in the config into the Python cache.
+
+        Attributes:
+            Visum: Instance of the PTV Visum software.
+            rand: Random state of numpy.
+            config (Config): Config object containing all the necessary parameters.
+            zones: List of all zone numbers.
+            zoneNo_to_zoneInd: Mapping between zone number and position of the zone index in the matrices.
+    """
+
     def __init__(self, Visum, seed_val=42, add_skims_to_cache=True):
         self.Visum = Visum
         self.rand = np.random.RandomState(seed_val)
@@ -43,7 +62,7 @@ class MOBiPlansSimulator(StreamHandler):
         # initialize all filters
         self.Visum.Filters.InitAll()
 
-        # load zones
+        # load zones and create mapping to come from zone numbers to indices (for matrix intexing)
         self.zones = np.array(self.Visum.Net.Zones.GetMultiAttValues('No'), dtype=int)[:, 1]
         self.zoneNo_to_zoneInd = dict(zip(self.zones, range(len(self.zones))))
 
@@ -51,10 +70,24 @@ class MOBiPlansSimulator(StreamHandler):
         self.config = Config(self.Visum, logging, add_skims_to_cache)
 
     def long_term_location_choice(self, cache=None, use_IPF=True, accsib_multimodal_attribute='accsib_mul'):
+        """
+            Simulation of the long-term location choice (work or school place).
+            It is a two-staged process: Firstly, a traffic zone is chosen. Secondly, the choice of one specific
+            location within the chosen zone is performed.
+
+            Parameters:
+                cache (MatrixCache): MatrixCache object containing all cached matrices.
+                use_IPF (bool): Possibility to use the iterative fitting approach or not.
+                accsib_multimodal_attribute (str): the multimodal accessibility of the long-term location's zone.
+
+            Returns:
+                Updated Visum Persons tables with information about their long-term locations.
+        """
         logging.info('--- location choice ---')
         segments = self.config.load_choice_para('PrimLoc')
-        accessibility_multi = np.array(self.Visum.Net.Zones.GetMultiAttValues(accsib_multimodal_attribute), dtype=int)[
-                              :, 1]
+        # the multimodal accessibility of the long-term location is a necessary input for the subtour choice models
+        accessibility_multi = np.array(self.Visum.Net.Zones.GetMultiAttValues(accsib_multimodal_attribute),
+                                       dtype=int)[:, 1]
 
         logging.info('--- initialize long-term locations keys ---')
         logging.info('remove existing long term choices')
@@ -64,18 +97,32 @@ class MOBiPlansSimulator(StreamHandler):
         self.Visum.Net.Schedules.RemoveAll()
         self.Visum.Net.Persons.SetAllAttValues("out_of_home_time", 0.0)
 
+        # we use car distances from residence to long-term location as an input for the tour frequency models.
         dist_mat = self.config.skim_matrices.get_skim("car_net_distance_sym")
+
+        # simulating the long-term location choice step
         run_long_term_primary_location_choice(self.Visum, self.config.skim_matrices, segments, self.zones,
                                               self.zoneNo_to_zoneInd, accessibility_multi,
                                               dist_mat, logging, use_IPF, cache)
 
     def plan_generation(self, time_budget_dict=None, out_of_home_budget=18.0):
+        """
+            This method simulates the choice dimensions activity generation, duration and secondary
+            destinations. It is built as an iterative process which considers time budgets.
+
+            Parameters:
+                time_budget_dict: Dictionary with information about time budgets in specific iterations
+                out_of_home_budget (float): Total out-of-home budget.
+
+            Returns:
+                Create Visum Tours/ Trips/ ActivityExecutions tables and fills them with all necessary information.
+        """
         matrix_cache = MatrixCache(logging)
 
         nb_iters = len(time_budget_dict)
 
         for i in range(nb_iters):
-            logging.info("--- plan adjustment iteration " + str(i + 1) + " ---")
+            logging.info("--- plan generation iteration " + str(i + 1) + " ---")
 
             active_persons = self.Visum.Net.Persons.GetFilteredSet("[active]=1")
             if i == 0:
@@ -92,6 +139,7 @@ class MOBiPlansSimulator(StreamHandler):
                 self.Visum.Net.AddMultiSchedules(keys)
             else:
                 filtered_persons = active_persons.GetFilteredSet("[out_of_home_time]>=" + str(out_of_home_budget))
+                # initializes schedules of all persons that break the out-of-home time budget.
                 utilities.init_schedules(self.Visum, filtered_persons, logging)
 
             logging.info('--- tour frequency choice ---')
@@ -126,20 +174,25 @@ class MOBiPlansSimulator(StreamHandler):
     def tour_frequency_choice(self, filtered_persons):
         segments_prim = self.config.load_choice_para('TourFreqPrim')
         for segment in segments_prim:
+            # reset tour frequency choices
             result_attr = segment['ResAttr']
             filtered_persons.SetAllAttValues(result_attr, 0)
 
         segments_sec = self.config.load_choice_para('TourFreqSec')
         for segment in segments_sec:
+            # reset tour frequency choices
             result_attr = segment['ResAttr']
             filtered_persons.SetAllAttValues(result_attr, 0)
 
+        # run primary tour frequency
         run_tour_frequency_choice(self.Visum, self.rand, filtered_persons, segments_prim, is_primary=True)
+        # run secondary tour frequency
         run_tour_frequency_choice(self.Visum, self.rand, filtered_persons, segments_sec, is_primary=False)
 
     def stop_frequency_choice(self, filtered_tours):
         segments = self.config.load_choice_para('TourStopFreq')
         for segment in segments:
+            # reset stop frequency
             result_attr = segment['ResAttr']
             filtered_tours.SetAllAttValues(result_attr, 0)
 
@@ -150,6 +203,7 @@ class MOBiPlansSimulator(StreamHandler):
     def subtour_choice(self, filtered_persons, filtered_tours):
         segments = self.config.load_choice_para('SubtourFreq')
         for segment in segments:
+            # reset subtour frequency
             result_attr = segment['ResAttr']
             filtered_tours.SetAllAttValues(result_attr, 0)
 
@@ -158,6 +212,7 @@ class MOBiPlansSimulator(StreamHandler):
             choice_engine.run_simple_choice(filtered_tours, segment, self.rand)
 
         logging.info('--- create trips ---')
+        # create trips and activity excecutions
         create_trips(self.Visum, filtered_persons, filtered_tours, self.rand, logging)
 
     def activity_choice(self, filtered_act_ex):
@@ -196,20 +251,22 @@ class MOBiPlansSimulator(StreamHandler):
             betas_act = [b for (a, b) in zip(segment['AttrExpr'], segment['Beta']) if a == '0']
             acts = [b for (a, b) in zip(segment['AttrExpr'], segment['Comments']) if a == '0']
             filtered_subjects = utilities.get_filtered_subjects(subjects, segment['Filter'])
-            if segment['ResAttr'][-4:]=="_act":
-                choice_per_subject = [0]*len(filtered_subjects)
+            if segment['ResAttr'][-4:] == "_act":
+                choice_per_subject = [0] * len(filtered_subjects)
                 for (activity, beta) in zip(acts, betas_act):
                     assert activity in activities, f"{segment['Specification']}, activity {activity} not defined"
-                    bit = 2**activities.index(activity)
-                    choice_per_subject = choice_per_subject + choice_engine.calc_binary_probabilistic_choice_per_subject(filtered_subjects,
-                                                                                         ['1'],
-                                                                                         [beta[0]],
-                                                                                         segment['Choices'], self.rand)*bit
+                    bit = 2 ** activities.index(activity)
+                    choice_per_subject = (choice_per_subject +
+                                          choice_engine.calc_binary_probabilistic_choice_per_subject(filtered_subjects,
+                                                                                                     ['1'], [beta[0]],
+                                                                                                     segment['Choices'],
+                                                                                                     self.rand) * bit)
             else:
                 choice_per_subject = choice_engine.calc_binary_probabilistic_choice_per_subject(filtered_subjects,
-                                                                                         att_expr,
-                                                                                         [b[0] for b in betas],
-                                                                                         segment['Choices'], self.rand)
+                                                                                                att_expr,
+                                                                                                [b[0] for b in betas],
+                                                                                                segment['Choices'],
+                                                                                                self.rand)
             result_attr = segment['ResAttr']
             filtered_subjects.SetAllAttValues(result_attr, 0)
             utilities.SetMulti(filtered_subjects, result_attr, choice_per_subject)
