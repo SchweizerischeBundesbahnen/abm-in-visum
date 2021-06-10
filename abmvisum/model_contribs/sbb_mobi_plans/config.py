@@ -13,17 +13,39 @@ def get_UDA_IDs(container):
 
 
 class Config(object):
+    """
+        Central storage of all necessary parameters. The parameters come from Visum-internal table structures (at
+        the moment, parameters are defined as POI).
+        Also, it has the optional possibility to add the skim matrices into a Python cache (as defined in the
+        Visum Matrix structur).
+
+        Parameters:
+            Visum: Instance of the PTV Visum software.
+            logging: logger as initialized in the simulator
+            add_skims_to_cache: Possibility to load all skim matrices as defined in the config into the Python cache.
+
+        Attributes:
+            Visum: Instance of the PTV Visum software.
+            choice_models: dictionary of all the choice models as defined in the ABM procedure
+            impedance_expr = impedance expression (depending on activity type)
+            logging = possibility to log Visum messages
+            skim_matrices: dictionary cached skim matrices
+    """
     def __init__(self, Visum, logging, add_skims_to_cache=True):
         self.Visum = Visum
         self.choice_models = collections.defaultdict(list)
         self.impedance_expr = {}
         self.logging = logging
         self.init_choice_models()
+
         self.skim_matrices = MatrixCache(logging)
         if add_skims_to_cache:
             self.add_skims_to_cache()
 
     def add_skims_to_cache(self):
+        """
+            Loads the skims which are needed to run SBBs' model into the cache
+        """
         self.logging.info('loading all skim matrices to cache')
         self.skim_matrices.add_skim_to_cache("car_travel_times_sym", VPH.GetMatrixRaw(self.Visum, 11))
         self.skim_matrices.add_skim_to_cache("car_net_distance_sym", VPH.GetMatrixRaw(self.Visum, 12))
@@ -44,6 +66,13 @@ class Config(object):
                                                                              "pc_car"))[np.newaxis, :])
 
     def init_choice_models(self):
+        """
+            1. It goes through the Visum ABM procedure table and stores every segment in self.choice_models. Every
+                choice model can have multiple segments (e.g., age classes). The segments can be freely
+                customized in the procedure table
+            2. It saves optional impedance expressions as defined in the POI table. The expression can be functions
+                of all skims available in the cache.
+        """
         # get definitions of choice models with segments
         poicat_lookup = dict(self.Visum.Net.POICategories.GetMultipleAttributes(['Code', 'No']))
         attributes = ['ChoiceModel', 'Specification', 'ID', 'ResAttr', 'Filter', 'AddData', 'Active', 'MaxPlusOne',
@@ -82,6 +111,10 @@ class Config(object):
             self.logging.info("No impedance params defined or they are corrupt")
 
     def load_choice_para(self, choice_model):
+        """
+            Loads choice parameters for specific model types. The standard case is a discrete choice model with
+            Betas that depend on a certain attribute.
+        """
         model_data = self.choice_models[choice_model]
 
         is_destZone_choice = choice_model == "PrimLoc" or choice_model == "DestMajor" or choice_model == "SecDest"
@@ -153,6 +186,9 @@ class Config(object):
         return para
 
     def load_act_dur_para(self, choice_model):
+        """
+            Loads activity duration choice parameters
+        """
         model_data = self.choice_models[choice_model]
 
         para = []
@@ -177,6 +213,9 @@ class Config(object):
         return para
 
     def load_start_times_para(self, choice_model):
+        """
+            Loads activity start time choice parameters
+        """
         model_data = self.choice_models[choice_model]
 
         para = []

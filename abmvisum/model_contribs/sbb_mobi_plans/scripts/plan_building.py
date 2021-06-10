@@ -1,17 +1,3 @@
-"""
-This scripts performs the plan adjustment algorithm within a Visum procedure.
-
-It contains the following steps of MOBi.plans:
-1. generation models (tour, stop, subtour frequencies)
-2. activity type
-3. destinations of the secondary activities
-4. durations of all activities
-5. iterative process based on time budgets (travel, performing, total out-of-home)
-
-Output are mobility plans containing tours and trips (incl. network distance) as well as
-activity executions (incl. durations and exact coordinates)
-"""
-
 import importlib
 import sys
 from pathlib import Path
@@ -40,6 +26,23 @@ time_budget_dict = {0: {'performing_budget': 14.0,
 importlib.reload(simulator)
 
 if __name__ == '__main__':
+    """
+        This script performs the plan-building algorithm within a Visum procedure.
+    
+        It contains the following steps of MOBi.plans:
+        1. generation models (tour, stop, subtour frequencies)
+        2. activity type
+        3. destinations of the secondary activities
+        4. durations of all activities
+        5. iterative process based on time budgets (travel, performing, total out-of-home)
+    
+        Output are mobility plans containing tours and trips (incl. network distance) as well as
+        activity executions (incl. durations and exact coordinates)
+        
+        Author:
+            Patrick Manser
+    """
+
     start_logging()
 
     # powerful machine is necessary to run this client, e.g. NALA at SBB

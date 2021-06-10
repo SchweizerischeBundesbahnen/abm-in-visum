@@ -26,6 +26,16 @@ time_budget_dict = {0: {'performing_budget': 14.0,
 importlib.reload(simulator)
 
 if __name__ == '__main__':
+    """
+        This script performs all choice steps to simulate a full activity-based model. More information
+        about the individual steps can be found in the separate scripts.
+
+        Output is schedule for each person which is very precise and consistent in time and space.
+
+        Author:
+            Patrick Manser
+    """
+
     start_logging()
 
     # powerful machine is necessary to run this client, e.g. NALA at SBB
@@ -35,6 +45,8 @@ if __name__ == '__main__':
     # client = Client(processes=False, threads_per_worker=8, n_workers=1, memory_limit='40GB')
 
     abm_simulation = simulator.MOBiPlansSimulator(Visum=Visum)
+
+    abm_simulation.ownership_models()
 
     abm_simulation.long_term_location_choice()
 

@@ -1,12 +1,3 @@
-"""
-This scripts performs the long term location choice model within a Visum procedure.
-
-It contains the following steps of MOBi.plans:
-1. location choice with an IPF-algorithm
-
-Output are long-term location keys (pointing to exact coordinates) for persons who are either employed (work place)
-or in any kind of education (school)
-"""
 import importlib
 import sys
 from pathlib import Path
@@ -22,6 +13,18 @@ from abmvisum.tools.utilities import start_logging
 importlib.reload(simulator)
 
 if __name__ == '__main__':
+    """
+        This script performs the long term location choice model within a Visum procedure.
+    
+        It contains the following steps of MOBi.plans:
+        1. location choice with an IPF-algorithm
+    
+        Output are long-term location keys (pointing to exact coordinates) for persons who are either employed (work place)
+        or in any kind of education (school)
+        
+        Author:
+            Patrick Manser
+    """
     start_logging()
 
     # powerful machine is necessary to run this client, e.g. NALA at SBB
