@@ -17,7 +17,7 @@ from .core.start_time_choice import run_start_time_choice
 from .core.tour_frequency_choice import run_tour_frequency_choice
 from .matrix_cache import MatrixCache
 
-importlib.reload(choice_engine)  # prevents Visum from caching methods
+importlib.reload(choice_engine)  # prevents Visum from caching imports
 
 
 class MOBiPlansSimulator(StreamHandler):
@@ -237,41 +237,6 @@ class MOBiPlansSimulator(StreamHandler):
         logging.info('--- start time choice ---')
         segments = self.config.load_start_times_para('StartTime')
         run_start_time_choice(segments, self.Visum, logging, self.rand)
-
-    def railaccess_choiceset(self):
-        logging.info('--- railaccess choice set ---')
-        segments = self.config.load_choice_para('RailAccess')
-        subjects = self.Visum.Net.Persons
-        activities = sorted(list(set(self.Visum.Net.Activities.GetMultipleAttributes(["Name"]))))
-
-        for segment in segments:
-            logging.info(f'{segment["Specification"]}->{segment["ResAttr"]}')
-            betas = [b for (a, b) in zip(segment['AttrExpr'], segment['Beta']) if a != '0']
-            att_expr = [a for a in segment['AttrExpr'] if a != '0']
-            betas_act = [b for (a, b) in zip(segment['AttrExpr'], segment['Beta']) if a == '0']
-            acts = [b for (a, b) in zip(segment['AttrExpr'], segment['Comments']) if a == '0']
-            filtered_subjects = utilities.get_filtered_subjects(subjects, segment['Filter'])
-            if segment['ResAttr'][-4:] == "_act":
-                choice_per_subject = [0] * len(filtered_subjects)
-                for (activity, beta) in zip(acts, betas_act):
-                    assert activity in activities, f"{segment['Specification']}, activity {activity} not defined"
-                    bit = 2 ** activities.index(activity)
-                    choice_per_subject = (choice_per_subject +
-                                          choice_engine.calc_binary_probabilistic_choice_per_subject(filtered_subjects,
-                                                                                                     ['1'], [beta[0]],
-                                                                                                     segment['Choices'],
-                                                                                                     self.rand) * bit)
-            else:
-                choice_per_subject = choice_engine.calc_binary_probabilistic_choice_per_subject(filtered_subjects,
-                                                                                                att_expr,
-                                                                                                [b[0] for b in betas],
-                                                                                                segment['Choices'],
-                                                                                                self.rand)
-            result_attr = segment['ResAttr']
-            filtered_subjects.SetAllAttValues(result_attr, 0)
-            utilities.SetMulti(filtered_subjects, result_attr, choice_per_subject)
-
-            logging.info('%s set for %d objects' % (result_attr, len(choice_per_subject)))
 
     def ownership_models(self):
         logging.info('--- mobility tool ownership models ---')

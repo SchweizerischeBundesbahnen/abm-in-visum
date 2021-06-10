@@ -1,6 +1,6 @@
 class MatrixCache:
     """
-    To write.
+        Possibility to store matrices in a Python cache outside of Visum.
     """
 
     def __init__(self, logging):

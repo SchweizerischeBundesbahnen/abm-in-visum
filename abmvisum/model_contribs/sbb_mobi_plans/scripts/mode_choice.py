@@ -1,11 +1,3 @@
-"""
-This scripts performs the mode choice model within a Visum procedure.
-
-It contains the following steps of MOBi.plans:
-1. mode choice for tours and subtours
-
-Output are modes assigned to each trip as well as updated travel times for each trip
-"""
 import importlib
 import sys
 from pathlib import Path
@@ -19,6 +11,17 @@ from abmvisum.tools.utilities import start_logging
 importlib.reload(simulator)
 
 if __name__ == '__main__':
+    """
+        This script performs the mode choice model within a Visum procedure.
+    
+        It contains the following steps of MOBi.plans:
+        1. mode choice for tours and subtours
+    
+        Output are modes assigned to each trip as well as updated travel times for each trip
+        
+        Author:
+            Patrick Manser
+    """
     start_logging()
 
     abm_simulation = simulator.MOBiPlansSimulator(Visum=Visum)
