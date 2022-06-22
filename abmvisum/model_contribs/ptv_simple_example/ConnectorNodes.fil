@@ -1,0 +1,25 @@
+<?xml  version = "1.0"  encoding = "UTF-8"?>
+<FILTER  VERSIONNO = "2200">
+  <NODE    USEFILTER = "1"    COMPLEMENT = "0">
+    <CONDITIONS>
+      <CONDITION        OPERATION = "OP_NONE"        COMPLEMENT = "0">
+        <CONTAINEDIN
+          ATTRIBUTE = "NO"
+          RELATION = "INLINKS\LINKTYPE"
+          QUANTOR = "ANY"
+          FROMRANGE = "20"
+          TORANGE = "79"
+        />        
+      </CONDITION>
+      <CONDITION        OPERATION = "OP_AND"        COMPLEMENT = "0">
+        <CONTAINEDIN
+          ATTRIBUTE = "NO"
+          RELATION = "OUTLINKS\LINKTYPE"
+          QUANTOR = "ANY"
+          FROMRANGE = "20"
+          TORANGE = "79"
+        />        
+      </CONDITION>
+    </CONDITIONS>
+  </NODE>
+</FILTER>

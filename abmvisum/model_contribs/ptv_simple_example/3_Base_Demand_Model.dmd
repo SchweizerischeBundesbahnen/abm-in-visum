@@ -1,0 +1,27 @@
+﻿$VISION
+* 
+* Tabelle: Versionsblock
+* 
+$VERSION:VERSNR;FILETYPE;LANGUAGE;UNIT
+13.000;Demand;ENG;KM
+
+* 
+* Tabelle: Nachfragemodelle
+* 
+$DEMANDMODEL:CODE;NAME;TYPE;MODESET
+ABM;ABM;ABM;
+
+* 
+* Tabelle: Aktivitäten
+* 
+$ACTIVITY:CODE;NAME;DEMANDMODELCODE;ISHOMEACTIVITY;ID;PRIMLOCDISTATTR
+E1;Education primary Pupil;ABM;0;5;CAR_DIST_EDU
+E2;Education secondary Pupil;ABM;0;6;CAR_DIST_EDU
+E3;Education Apprentice;ABM;0;8;CAR_DIST_EDU
+E4;Education tertiary Student;ABM;0;7;CAR_DIST_EDU
+H;Home;ABM;1;9;
+L;Leisure;ABM;0;1;
+O;Other;ABM;0;2;
+S;Shopping;ABM;0;3;
+W;Work;ABM;0;4;CAR_DIST_WORK
+

@@ -1,0 +1,18 @@
+﻿$VISION
+* Visum Inhouse License (Productive)
+* 01/21/22
+* 
+* Table: Version block
+* 
+$VERSION:VERSNR;FILETYPE;LANGUAGE;UNIT
+13.00;Att;ENG;KM
+
+* 
+* Table: Modes
+* 
+$MODE:CODE;ID;RANK
+Bike;1;0
+C;2;0
+CP;3;2
+PT;4;3
+W;5;1

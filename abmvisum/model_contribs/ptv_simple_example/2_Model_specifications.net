@@ -1,0 +1,588 @@
+﻿$VISION
+* Visum Inhouse License (Productive)
+* 01/21/22
+* 
+* Table: Version block
+* 
+$VERSION:VERSNR;FILETYPE;LANGUAGE;UNIT
+13.000;Net;ENG;KM
+
+* 
+* Table: Table definitions
+* 
+$TABLEDEFINITION:NAME;GROUP;COMMENT
+ActDur;ActDur;activity duration choice - [Activity executions]
+ActType;ActType;activity type choice - [Activity executions]
+DestMajorAdult;DestMajor;
+DestMajorStu;DestMajor;
+DestMinorAdult;Dest;destination choice adults - [Activity executions]
+DestMinorStu;Dest;destination choice students - [Activity executions]
+Global attributes;Global attributes;globally used attributes
+Global attributes - not referenced;Global attributes;Table of global variables, which are used but which cannot be referenced from this table
+Model Steps;Model steps;Sequence of model steps - different objects
+ModeMajorAdult;ModeMajor;major mode choice adults - [Activity executions at trip destination]
+ModeMajorStu;ModeMajor;major mode choice students - [Activity executions at trip destination]
+ModeMinorAdult;ModeMinor;minor mode choice adults - [Activity executions at trip destination or origin]
+ModeMinorStu;ModeMinor;minor mode choice students - [Activity executions at trip destination or origin]
+PrimLocAdult;PrimLoc;choice of primary location adults - [Person]
+PrimLocStu;PrimLoc;choice of primary location students - [Person]
+StartTime;StartTime;start time choice - [Activity executions]
+StopFreqInbE;StopFreqInb;choice of frequence of inbound stops in education tours - [Tour]
+StopFreqInbO;StopFreqInb;choice of frequence of inbound stops in other tours - [Tour]
+StopFreqInbW;StopFreqInb;choice of frequence of inbound stops in work tours - [Tour]
+StopFreqOutbE;StopFreqOutb;choice of frequence of outbound stops in education tours - [Tour]
+StopFreqOutbO;StopFreqOutb;choice of frequence of outbound stops in other tours - [Tour]
+StopFreqOutbW;StopFreqOutb;choice of frequence of outbound stops in work tours - [Tour]
+SubFreqE;SubtourFreq;choice of frequence of sub-tours as part of education tours - [Tour]
+SubFreqW;SubtourFreq;choice of frequence of sub-tours as part of work tours - [Tour]
+TourFreqE;TourFreqPrim;choice of frequence of education tours - [Person]
+TourFreqO;TourFreqSec;choice of frequence of other tours - [Person]
+TourFreqW;TourFreqPrim;choice of frequence of work tours - [Person]
+
+* 
+* Table: User-defined attributes
+* 
+$USERATTDEF:OBJID;ATTID;CODE;NAME;VALUETYPE;MINVALUE;MAXVALUE;DEFAULTVALUE;DEFAULTSTRINGVALUE;COMMENT;MAXSTRINGLENGTH;NUMDECPLACES;DATASOURCETYPE;FORMULA;SCALEDBYLENGTH;CROSSSECTIONLOGIC;CSLIGNORECLOSED;SUBATTRS;CANBEEMPTY;OPERATIONREFERENCE
+TABLEENTRIES_ACTDUR;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_ACTDUR;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_ACTDUR;DISTRIBUTION;Distribution;Distribution;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_ACTDUR;LOCATION;Location;Location;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTDUR;MAX;Max;Max;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTDUR;MIN;Min;Min;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTDUR;SCALE;Scale;Scale;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTTYPE;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_ACTTYPE;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_ACTTYPE;L;L;Leisure;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTTYPE;O;O;Other;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_ACTTYPE;S;S;Shopping;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_DESTMAJORADULT;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORADULT;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORADULT;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORADULT;MODECHOICETABLE;ModeChoiceTable;ModeChoiceTable;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORSTU;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORSTU;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORSTU;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMAJORSTU;MODECHOICETABLE;ModeChoiceTable;ModeChoiceTable;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORADULT;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORADULT;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORADULT;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORADULT;MODECHOICETABLE;ModeChoiceTable;ModeChoiceTable;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORSTU;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORSTU;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORSTU;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_DESTMINORSTU;MODECHOICETABLE;ModeChoiceTable;ModeChoiceTable;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES;ATTRIBUTE;Attribute;Attribute;LongText;0.000;0.000;;;;2147483647;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES;NAME;Name;Name;Text;MIN;MAX;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES;OCCURENCE;Occurence;Occurence;LongText;0.000;0.000;;;;2147483647;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES;VALUE;Value;Value;Double;MIN;MAX;;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_GLOBAL_ATTRIBUTES_-_NOT_REFERENCED;ATTRIBUTE;Attribute;Attribute;LongText;0.000;0.000;;;;2147483647;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES_-_NOT_REFERENCED;OCCURENCE;Occurence;Occurence;LongText;0.000;0.000;;;;2147483647;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_GLOBAL_ATTRIBUTES_-_NOT_REFERENCED;VALUE;Value;Value;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;1;
+TABLEENTRIES_MODEL_STEPS;ADDDATA;AddData;AddData;Int;-2147483648.000;2147483647.000;0.000;;;0;0;Data;;0;SUM;0;;1;
+TABLEENTRIES_MODEL_STEPS;CHOICEMODEL;ChoiceModel;ChoiceModel;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEL_STEPS;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEL_STEPS;FILTER;Filter;Filter;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEL_STEPS;SPECIFICATION;Specification;Specification;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEL_STEPS;SPECIFICATION2;Specification 2;Specification 2;Text;MIN;MAX;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;ATTREXPR;ATTREXPR;ATTREXPR;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;BIKE;Bike;Bike;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;CAR;Car;Car;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;CP;Car_Pass;Car_Pass;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;DESTINATIONIMPEDANCE;DestinationImpedance;DestinationImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;MODEIMPEDANCE;ModeImpedance;ModeImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;PT;PT;PT;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORADULT;W;Walk;Walk;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;ATTREXPR;ATTREXPR;ATTREXPR;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;BIKE;Bike;Bike;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;CAR;Car;Car;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;CP;Car_Pass;Car_Pass;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;DESTINATIONIMPEDANCE;DestinationImpedance;DestinationImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;MODEIMPEDANCE;ModeImpedance;ModeImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;PT;PT;PT;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMAJORSTU;W;Walk;Walk;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;ATTREXPR;ATTREXPR;ATTREXPR;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;BIKE;Bike;Bike;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;CAR;Car;Car;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;CP;Car_Pass;Car_Pass;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;DESTINATIONIMPEDANCE;DestinationImpedance;DestinationImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;MODEIMPEDANCE;ModeImpedance;ModeImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;PT;PT;PT;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORADULT;W;Walk;Walk;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;ATTREXPR;ATTREXPR;ATTREXPR;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;BIKE;Bike;Bike;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;CAR;Car;Car;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;CP;Car_Pass;Car_Pass;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;DESTINATIONIMPEDANCE;DestinationImpedance;DestinationImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;MODEIMPEDANCE;ModeImpedance;ModeImpedance;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;PT;PT;PT;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_MODEMINORSTU;W;Walk;Walk;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCADULT;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCADULT;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCADULT;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCSTU;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCSTU;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_PRIMLOCSTU;MATRIXEXPR;MatrixExpr;MatrixExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STARTTIME;ATTREXPR;Attribute expression;Attribute expression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STARTTIME;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STARTTIME;TIMESERIESNO;TimeSeriesNo;TimeSeriesNo;Int;-2147483648.000;2147483647.000;0.000;;;0;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBE;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBO;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQINBW;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBE;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBO;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_STOPFREQOUTBW;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQE;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQE;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQE;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQE;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQE;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQW;ATTREXPR;AttrExpr;AttrExpr;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQW;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQW;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQW;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_SUBFREQW;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;ATTREXPR;AttributeExpression;AttributeExpression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQE;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;ATTREXPR;AttributeExpression;AttributeExpression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQO;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;ATTREXPR;AttributeExpression;AttributeExpression;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;COMMENT;Comment;Comment;Text;0.000;0.000;;;;255;0;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;RESULT0;Result0;Result0;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;RESULT1;Result1;Result1;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;RESULT2;Result2;Result2;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+TABLEENTRIES_TOURFREQW;RESULT3;Result3;Result3;Double;MIN;MAX;0.000;;;0;2;Data;;0;SUM;0;;0;
+
+
+* 
+* Table: Table entries: ActDur
+* 
+$TABLEENTRIES_ACTDUR:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;DISTRIBUTION;LOCATION;MAX;MIN;SCALE
+ActDur;11;([ActivityCode]="E1") * (1-[IsPartOfSubtour]);Primary pupil;normal;4.200;6.900;1.800;0.600
+ActDur;12;([ActivityCode]="E1") * [IsPartOfSubtour];Primary pupil as part of a subtour;normal;2.900;4.800;1.300;0.600
+ActDur;21;([ActivityCode]="E2") * ([Schedule\Count:Tours]=1) * (1-[IsPartOfSubtour]);Secondary pupil with one tour;normal;5.300;9.400;3.500;0.900
+ActDur;22;([ActivityCode]="E2") * ([Schedule\Count:Tours]>1) * (1-[IsPartOfSubtour]);Secondary pupil with multiple tours;normal;3.300;4.800;1.700;1.000
+ActDur;23;([ActivityCode]="E2") * ([Schedule\Count:Tours]=1) * [IsPartOfSubtour];Secondary pupil with one tour as part of a subtour;normal;3.700;6.600;2.500;0.000
+ActDur;24;([ActivityCode]="E2") * ([Schedule\Count:Tours]>1) * [IsPartOfSubtour];Secondary pupil with multiple tours as part of a subtour;normal;2.300;3.400;1.200;0.000
+ActDur;31;([ActivityCode]="E3") * ([Schedule\Count:Tours]=1) * (1-[IsPartOfSubtour]);Apprentice (dual) with one tour;normal;6.800;9.700;4.000;1.200
+ActDur;32;([ActivityCode]="E3") * ([Schedule\Count:Tours]>1) * (1-[IsPartOfSubtour]);Apprentice (dual)  with multiple tours;lognormal;2.000;6.200;1.800;1.500
+ActDur;33;([ActivityCode]="E3") * ([Schedule\Count:Tours]=1) * [IsPartOfSubtour];Apprentice (dual) with one tour as part of a subtour;normal;4.800;6.800;2.800;0.000
+ActDur;34;([ActivityCode]="E3") * ([Schedule\Count:Tours]>1) * [IsPartOfSubtour];Apprentice (dual) with multiple tours as part of a subtour;lognormal;1.400;4.300;1.300;0.000
+ActDur;41;([ActivityCode]="E4") * ([Schedule\Count:Tours]=1) * (1-[IsPartOfSubtour]);tertiary Student with one tour;normal;6.700;11.000;3.000;2.000
+ActDur;42;([ActivityCode]="E4") * ([Schedule\Count:Tours]>1) * (1-[IsPartOfSubtour]);tertiary Student with multiple tours;normal;3.700;6.000;1.800;1.200
+ActDur;43;([ActivityCode]="E4") * ([Schedule\Count:Tours]=1) * [IsPartOfSubtour];tertiary Student with one tour as part of a subtour;normal;4.700;7.700;2.100;0.000
+ActDur;44;([ActivityCode]="E4") * ([Schedule\Count:Tours]>1) * [IsPartOfSubtour];tertiary Student with multiple tours as part of a subtour;normal;2.600;4.200;1.300;0.000
+ActDur;51;([ActivityCode]="W") * ([Schedule\Count:Tours]=1) * (1-[IsPartOfSubtour]);work for employees with one tour;Weibull;8.300;10.000;3.000;4.600
+ActDur;52;([ActivityCode]="W") * ([Schedule\Count:Tours]>1) * (1-[IsPartOfSubtour]);work for employees with multiple tours;normal;4.200;4.500;0.800;1.400
+ActDur;53;([ActivityCode]="W") * ([Schedule\Count:Tours]=1) * [IsPartOfSubtour];work for employees with one tour as part of a subtour;Weibull;5.800;7.000;2.100;0.000
+ActDur;54;([ActivityCode]="W") * ([Schedule\Count:Tours]>1) * [IsPartOfSubtour];work for employees with multiple tours as part of a subtour;normal;2.900;3.200;0.600;0.000
+ActDur;61;([ActivityCode]="S") * [IsMajorActivity] * (1-[IsPartOfSubtour]);Shopping as major activity;lognormal;-0.900;2.000;0.200;0.800
+ActDur;62;([ActivityCode]="S") * (1-[IsMajorActivity]) * (1-[IsPartOfSubtour]);Shopping as minor activity;lognormal;-1.500;1.000;0.100;0.800
+ActDur;63;([ActivityCode]="S") * [IsMajorActivity] * [IsPartOfSubtour];Shopping as major activity as part of a subtour;lognormal;-0.600;1.400;0.100;0.000
+ActDur;64;([ActivityCode]="S") * (1-[IsMajorActivity]) * [IsPartOfSubtour];Shopping as minor activity as part of a subtour;lognormal;-1.100;0.700;0.100;0.800
+ActDur;71;([ActivityCode]="L") * [IsMajorActivity] * (1-[IsPartOfSubtour]);Leisure as major activity;Weibull;1.800;5.300;0.200;2.000
+ActDur;72;([ActivityCode]="L") * (1-[IsMajorActivity]) * (1-[IsPartOfSubtour]);Leisure as minor activity;Weibull;1.200;3.000;0.100;1.400
+ActDur;73;([ActivityCode]="L") * [IsMajorActivity] * [IsPartOfSubtour];Leisure as major activity as part of a subtour;Weibull;1.300;3.700;0.100;0.000
+ActDur;74;([ActivityCode]="L") * (1-[IsMajorActivity]) * [IsPartOfSubtour];Leisure as minor activity as part of a subtour;Weibull;0.800;2.100;0.100;1.200
+ActDur;81;([ActivityCode]="O") * [IsMajorActivity] * (1-[IsPartOfSubtour]);Other activity as major activity;Weibull;1.500;4.500;0.200;1.600
+ActDur;82;([ActivityCode]="O") * (1-[IsMajorActivity]) * (1-[IsPartOfSubtour]);Other activity as minor activity;Weibull;1.300;2.000;0.100;1.200
+ActDur;83;([ActivityCode]="O") * [IsMajorActivity] * [IsPartOfSubtour];Other activity as major activity as part of a subtour;Weibull;1.100;3.200;0.100;0.000
+ActDur;84;([ActivityCode]="O") * (1-[IsMajorActivity]) * [IsPartOfSubtour];Other activity as minor activity as part of a subtour;Weibull;0.900;1.400;0.100;1.100
+
+* 
+* Table: Table entries: ActType
+* 
+$TABLEENTRIES_ACTTYPE:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;L;O;S
+ActType;1;ChoiceID;;1.000;2.000;3.000
+ActType;2;([Schedule\Person\empl_pct]=0) & ([Schedule\Person\edu_type]=0) & ([Schedule\Person\age]<65);Non-Employed;-0.783;-3.804;-1.021
+ActType;3;([Schedule\Person\empl_pct]>0) & ([Schedule\Person\empl_pct]<40) & ([Schedule\Person\edu_type]=0) & ([Schedule\Person\age]>=65) & ([Schedule\Person\age]<75);Retired Young;-0.653;-4.146;-0.925
+ActType;4;([Schedule\Person\empl_pct]>0) & ([Schedule\Person\empl_pct]<40) & ([Schedule\Person\edu_type]=0) & ([Schedule\Person\age]>=75);Retired Old;-0.727;-4.248;-0.795
+ActType;5;[Schedule\Person\Is_Pupil];Primary and Secondary Pupil;-0.491;-4.242;-1.618
+ActType;6;([Schedule\Person\empl_pct]=0) & [Schedule\Person\Is_Student];Tertiary Student WorkCat1;-0.574;-3.866;-1.276
+ActType;7;([Schedule\Person\empl_pct]>0) & ([Schedule\Person\empl_pct]<40) & [Schedule\Person\Is_Student];Tertiary Student WorkCat2;-0.708;-3.522;-1.125
+ActType;8;([Schedule\Person\empl_pct]>=40) & ([Schedule\Person\empl_pct]<80) & [Schedule\Person\Is_Student];Tertiary Student WorkCat3;-0.708;-3.522;-1.125
+ActType;9;([Schedule\Person\empl_pct]>=80) & [Schedule\Person\Is_Student];Tertiary Student WorkCat4;-0.708;-3.522;-1.125
+ActType;10;[Schedule\Person\edu_type]=3;Apprentice;-0.701;-2.660;-1.315
+ActType;11;([Schedule\Person\empl_pct]>0) & ([Schedule\Person\empl_pct]<40) & ([Schedule\Person\edu_type]=0);Employee Work<40;-0.825;-3.081;-1.097
+ActType;12;([Schedule\Person\empl_pct]>=40) & ([Schedule\Person\empl_pct]<80) & ([Schedule\Person\edu_type]=0);Employee Work<80;-1.052;-3.299;-1.095
+ActType;13;([Schedule\Person\empl_pct]>=80) & ([Schedule\Person\edu_type]=0);Employee Work>80;-0.990;-2.184;-1.271
+
+* 
+* Table: Table entries: DestMajorAdult
+* 
+$TABLEENTRIES_DESTMAJORADULT:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR;MODECHOICETABLE
+DestMajorAdult;1;0.8*([Schedule\Person\CarAvail]=1);CarAv;Matrix([Code]="Correction_Destination");ModeMajorAdult
+DestMajorAdult;2;0.8*([Schedule\Person\CarAvail]=0);NoCarAv;Matrix([Code]="Correction_Destination");ModeMajorAdult
+DestMajorAdult;3;0.6*([Schedule\Person\Household\COUNT:Persons([AGE]<12)]>0) * ([Activity\ID]=1) * [Location\Playground];Example for: leisure trip, children under 12 years in household, playground at destination;1;
+
+* 
+* Table: Table entries: DestMajorStu
+* 
+$TABLEENTRIES_DESTMAJORSTU:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR;MODECHOICETABLE
+DestMajorStu;1;0.9 * [Schedule\Person\Is_Prim_Pupil];primary pupil;Matrix([Code]="Correction_Destination");ModeMajorStu
+DestMajorStu;2;0.8 * [Schedule\Person\Is_Sec_Pupil];secondary pupil;Matrix([Code]="Correction_Destination");ModeMajorStu
+DestMajorStu;3;0.6*([Schedule\Person\CarAvail]=1) * ([Schedule\Person\edu_type]>=3);CarAv, university student or apprentice;Matrix([Code]="Correction_Destination");ModeMajorStu
+DestMajorStu;4;0.7*([Schedule\Person\CarAvail]=0) * ([Schedule\Person\edu_type]>=3);NoCarAv, university student or apprentice;Matrix([Code]="Correction_Destination");ModeMajorStu
+
+* 
+* Table: Table entries: DestMinorAdult
+* 
+$TABLEENTRIES_DESTMINORADULT:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR;MODECHOICETABLE
+DestMinorAdult;1;0.8*([Schedule\Person\CarAvail]=1);CarAv;Matrix([Code]="Correction_Destination");ModeMinorAdult
+DestMinorAdult;2;0.8*([Schedule\Person\CarAvail]=0);NoCarAv;Matrix([Code]="Correction_Destination");ModeMinorAdult
+DestMinorAdult;6;0.6*([Schedule\Person\Household\COUNT:Persons([AGE]<12)]>0) * ([Activity\ID]=1) * [Location\Playground];Example for: leisure trip, children under 12 years in household, playground at destination;1;
+
+* 
+* Table: Table entries: DestMinorStu
+* 
+$TABLEENTRIES_DESTMINORSTU:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR;MODECHOICETABLE
+DestMinorStu;1;0.9 * [Schedule\Person\Is_Prim_Pupil];primary pupil;Matrix([Code]="Correction_Destination");ModeMinorStu
+DestMinorStu;2;0.8 * [Schedule\Person\Is_Sec_Pupil];secondary pupil;Matrix([Code]="Correction_Destination");ModeMinorStu
+DestMinorStu;3;0.6*([Schedule\Person\CarAvail]=1) * ([Schedule\Person\edu_type]>=3);CarAv, university student or apprentice;Matrix([Code]="Correction_Destination");ModeMinorStu
+DestMinorStu;4;0.7*([Schedule\Person\CarAvail]=0) * ([Schedule\Person\edu_type]>=3);NoCarAv, university student or apprentice;Matrix([Code]="Correction_Destination");ModeMinorStu
+
+* 
+* Table: Table entries: Global attributes
+* 
+$TABLEENTRIES_GLOBAL_ATTRIBUTES:TABLEDEFINITIONNAME;NO;ATTRIBUTE;NAME;OCCURENCE;VALUE
+Global attributes;1;WalkPrTSys;W;;
+Global attributes;2;MaxWalkTimeInMinutesForPutShortestPathSearch;;;15.000
+Global attributes;3;WalkTimeImpedanceFactor;;;2.000
+Global attributes;4;DirectDistanceSpeed;;5 km/h with detour factor 1.4 ;3.600
+
+* 
+* Table: Table entries: Global attributes - not referenced
+* 
+$TABLEENTRIES_GLOBAL_ATTRIBUTES_-_NOT_REFERENCED:TABLEDEFINITIONNAME;NO;ATTRIBUTE;OCCURENCE;VALUE
+Global attributes - not referenced;1;VoT high income  (inverse of 15EUR/60min);PuT assignments, tab impedance, item fare;4.000
+
+* 
+* Table: Table entries: Model Steps
+* 
+$TABLEENTRIES_MODEL_STEPS:TABLEDEFINITIONNAME;NO;ADDDATA;CHOICEMODEL;COMMENT;FILTER;SPECIFICATION;SPECIFICATION2
+Model Steps;101;5;PrimLoc;Primary pupils;[edu_type]=1;PrimLocStu;
+Model Steps;102;6;PrimLoc;Secondary pupils;[edu_type]=2;PrimLocStu;
+Model Steps;103;8;PrimLoc;Apprentices;[edu_type]=3;PrimLocStu;
+Model Steps;104;7;PrimLoc;University students;[edu_type]=4;PrimLocStu;
+Model Steps;105;4;PrimLoc;Adults;[empl_pct]>0;PrimLocAdult;
+Model Steps;201;5;TourFreqPrim;Education tours, primary pupils;[edu_type]=1;TourFreqE;
+Model Steps;202;6;TourFreqPrim;Education tours, secondary pupils;[edu_type]=2;TourFreqE;
+Model Steps;203;8;TourFreqPrim;Education tours, apprentices;[edu_type]=3;TourFreqE;
+Model Steps;204;7;TourFreqPrim;Education tours, university students;[edu_type]=4;TourFreqE;
+Model Steps;205;4;TourFreqPrim;Work tours;[empl_pct]>0;TourFreqW;
+Model Steps;211;0;TourFreqSec;Other activities;;TourFreqO;
+Model Steps;301;0;StopFreqInb;Inbound stops for work tours;([PrimTourMajorActivityID]=4);StopFreqInbW;
+Model Steps;302;0;StopFreqInb;Inbound stops for education tours;([PrimTourMajorActivityID]=5) | ([PrimTourMajorActivityID]=6) | ([PrimTourMajorActivityID]=7) | ([PrimTourMajorActivityID]=8);StopFreqInbE;
+Model Steps;303;0;StopFreqInb;Inbound stops for other tours;([is_primary]=0);StopFreqInbO;
+Model Steps;311;0;StopFreqOutb;Outbound stops for work tours;([PrimTourMajorActivityID]=4);StopFreqOutbW;
+Model Steps;312;0;StopFreqOutb;Outbound stops for education tours;([PrimTourMajorActivityID]=5) | ([PrimTourMajorActivityID]=6) | ([PrimTourMajorActivityID]=7) | ([PrimTourMajorActivityID]=8);StopFreqOutbE;
+Model Steps;313;0;StopFreqOutb;Outbound stops for other tours;([is_primary]=0);StopFreqOutbO;
+Model Steps;401;0;SubtourFreq;Subtour stops for work tours;[PrimTourMajorActivityID]=4;SubFreqW;
+Model Steps;402;0;SubtourFreq;Subtour stops for education tour;([PrimTourMajorActivityID]=5) | ([PrimTourMajorActivityID]=6) | ([PrimTourMajorActivityID]=7) | ([PrimTourMajorActivityID]=8);SubFreqE;
+Model Steps;501;0;ActType;All secondary activities;[ActivityCode]="";ActType;
+Model Steps;601;0;ActDur;Activity executions;([ActivityCode]!="H");ActDur;
+Model Steps;701;0;StartTime;All elements of the daily plans;;StartTime;
+Model Steps;801;0;DestMajor;All students and pupils;([Schedule\Person\edu_type]!=0);DestMajorStu;
+Model Steps;802;0;DestMajor;Adults;([Schedule\Person\edu_type]=0);DestMajorAdult;
+Model Steps;901;0;ModeMajor;All students and pupils;([Schedule\Person\edu_type]!=0);ModeMajorStu;
+Model Steps;902;0;ModeMajor;Adults;([Schedule\Person\edu_type]=0);ModeMajorAdult;
+Model Steps;1001;0;DestAndModeMinor;All students and pupils;([Schedule\Person\edu_type]!=0);DestMinorStu;ModeMinorStu
+Model Steps;1002;0;DestAndModeMinor;Adults;([Schedule\Person\edu_type]=0);DestMinorAdult;ModeMinorAdult
+
+* 
+* Table: Table entries: ModeMajorAdult
+* 
+$TABLEENTRIES_MODEMAJORADULT:TABLEDEFINITIONNAME;NO;ATTREXPR;BIKE;CAR;COMMENT;CP;DESTINATIONIMPEDANCE;MATRIXEXPR;MODEIMPEDANCE;PT;W
+ModeMajorAdult;1;ChoiceID;1.000;2.000;mode IDs;3.000;;;;4.000;5.000
+ModeMajorAdult;2;1;-0.090;0.000;travel time bike;0.000;Matrix([Code]="TT0" & [DSegCode]="Bike");1;PrTShortestPathImpedance(Imp_PrTSys(Bike,AP));0.000;0.000
+ModeMajorAdult;3;1;0.000;-0.060;Impedance car;0.000;Matrix([Code]="IMP" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime])/60;1;PrTShortestPathImpedance(Imp_Car());0.000;0.000
+ModeMajorAdult;5;1;0.000;0.000;Impedance car passenger;-0.020;Matrix([Code]="TTC" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(TCur_Car());0.000;0.000
+ModeMajorAdult;6;1;0.000;0.000;Impedance PT;0.000;Matrix([Code]="IPD" & [DSegCode]="PT" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PuTShortestPathImpedance(PT_SA);-0.100;0.000
+ModeMajorAdult;8;1;0.000;0.000;travel time walk;0.000;Matrix([Code]="TT0" & [DSegCode]="W");1;DirectDistance();0.000;-0.120
+ModeMajorAdult;9;(1-[Schedule\Person\DrivingLicense]);0.100;-999999.000;No car as driver availability (incl. no driver license);0.400;;1;;-0.050;0.000
+ModeMajorAdult;10;[Schedule\Person\Household\NOCars]=0;-0.100;-4.000;No car in household: car mode nearly not possible;-3.000;;1;;0.300;0.000
+ModeMajorAdult;12;[Activity\ID]=3;0.000;0.300;Shopping bonus for Car;0.000;;1;;-0.300;-0.100
+ModeMajorAdult;14;([Schedule\Person\empl_pct]>0);0.000;1.500;Mode specific constant employees;-2.500;;;;-1.000;1.000
+ModeMajorAdult;15;([Schedule\Person\empl_pct]=0) * ([Schedule\Person\Age]>=65);0.000;2.000;Mode specific constant unemployed;-2.500;;;;-0.500;0.000
+ModeMajorAdult;16;([Schedule\Person\empl_pct]=0) * ([Schedule\Person\Age]<65);-1.000;2.000;Mode specific constant retired;-3.500;;;;-1.000;0.000
+
+* 
+* Table: Table entries: ModeMajorStu
+* 
+$TABLEENTRIES_MODEMAJORSTU:TABLEDEFINITIONNAME;NO;ATTREXPR;BIKE;CAR;COMMENT;CP;DESTINATIONIMPEDANCE;MATRIXEXPR;MODEIMPEDANCE;PT;W
+ModeMajorStu;1;ChoiceID;1.000;2.000;mode IDs;3.000;;;;4.000;5.000
+ModeMajorStu;2;1;-0.060;0.000;Impedance bike;0.000;Matrix([Code]="TT0" & [DSegCode]="Bike");1;PrTShortestPathImpedance(Imp_PrTSys(Bike,AP));0.000;0.000
+ModeMajorStu;3;1;0.000;-0.040;Impedance car;0.000;Matrix([Code]="IMP" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(Imp_Car());0.000;0.000
+ModeMajorStu;4;1;0.000;0.000;Impedance car passenger;-0.020;Matrix([Code]="TTC" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(TCur_Car());0.000;0.000
+ModeMajorStu;5;1;0.000;0.000;Impedance PT;0.000;Matrix([Code]="IPD" & [DSegCode]="PT" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PuTShortestPathImpedance(PT_SA);-0.060;0.000
+ModeMajorStu;6;1;0.000;0.000;travel time walk;0.000;Matrix([Code]="TT0" & [DSegCode]="W");1;DirectDistance();0.000;-0.100
+ModeMajorStu;7;(1-[Schedule\Person\DrivingLicense]);0.100;-999999.000;No car as driver availability (incl. no driver license);0.400;;1;;-0.050;0.000
+ModeMajorStu;8;[Schedule\Person\Household\NOCars]=0;-0.100;-4.000;No car in household: car mode nearly not possible;-3.000;;1;;0.300;0.000
+ModeMajorStu;10;[Activity\ID]=3;0.000;0.300;example for formulas: Shopping bonus for Car;0.000;;1;;-0.300;-0.100
+ModeMajorStu;11;1;0.500;-0.500;inner traffic bonus/malus;-1.000;;Matrix([Code]="InnerTraffic");;0.000;1.000
+ModeMajorStu;12;[Schedule\Person\Is_Prim_Pupil];1.000;-999999.000;Mode specific constant primary pupils;-2.000;;;;1.000;4.000
+ModeMajorStu;13;[Schedule\Person\edu_type]>1;1.000;-2.000;Mode specific constant students;-3.000;;1;;1.000;3.500
+
+* 
+* Table: Table entries: ModeMinorAdult
+* 
+$TABLEENTRIES_MODEMINORADULT:TABLEDEFINITIONNAME;NO;ATTREXPR;BIKE;CAR;COMMENT;CP;DESTINATIONIMPEDANCE;MATRIXEXPR;MODEIMPEDANCE;PT;W
+ModeMinorAdult;1;ChoiceID;1.000;2.000;mode IDs;3.000;;;;4.000;5.000
+ModeMinorAdult;2;1;-0.090;0.000;travel time bike;0.000;Matrix([Code]="TT0" & [DSegCode]="Bike");1;PrTShortestPathImpedance(Imp_PrTSys(Bike,AP));0.000;0.000
+ModeMinorAdult;3;1;0.000;-0.060;Impedance car;0.000;Matrix([Code]="IMP" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime])/60;1;PrTShortestPathImpedance(Imp_Car());0.000;0.000
+ModeMinorAdult;4;1;0.000;0.000;Impedance car passenger;-0.020;Matrix([Code]="TTC" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(TCur_Car());0.000;0.000
+ModeMinorAdult;5;1;0.000;0.000;Impedance PT;0.000;Matrix([Code]="IPD" & [DSegCode]="PT" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PuTShortestPathImpedance(PT_SA);-0.100;0.000
+ModeMinorAdult;6;1;0.000;0.000;travel time walk;0.000;Matrix([Code]="TT0" & [DSegCode]="W");1;DirectDistance();0.000;-0.120
+ModeMinorAdult;7;(1-[Schedule\Person\DrivingLicense]);0.100;-999999.000;No car as driver availability (incl. no driver license);0.400;;1;;-0.050;0.000
+ModeMinorAdult;8;[Schedule\Person\Household\NOCars]=0;-0.100;-4.000;No car in household: car mode nearly not possible;-3.000;;1;;0.300;0.000
+ModeMinorAdult;9;[Activity\ID]=3;0.000;0.300;Shopping bonus for Car;0.000;;1;;-0.300;-0.100
+ModeMinorAdult;10;([Schedule\Person\empl_pct]>0);0.000;1.500;Mode specific constant employees;-2.500;;;;-1.000;1.000
+ModeMinorAdult;11;([Schedule\Person\empl_pct]=0) * ([Schedule\Person\Age]>=65);0.000;2.000;Mode specific constant unemployed;-2.500;;;;-0.500;0.000
+ModeMinorAdult;12;([Schedule\Person\empl_pct]=0) * ([Schedule\Person\Age]<65);-1.000;2.000;Mode specific constant retired;-3.500;;;;-1.000;0.000
+
+* 
+* Table: Table entries: ModeMinorStu
+* 
+$TABLEENTRIES_MODEMINORSTU:TABLEDEFINITIONNAME;NO;ATTREXPR;BIKE;CAR;COMMENT;CP;DESTINATIONIMPEDANCE;MATRIXEXPR;MODEIMPEDANCE;PT;W
+ModeMinorStu;1;ChoiceID;1.000;2.000;mode IDs;3.000;;;;4.000;5.000
+ModeMinorStu;2;1;-0.060;0.000;Impedance bike;0.000;Matrix([Code]="TT0" & [DSegCode]="Bike");1;PrTShortestPathImpedance(Imp_PrTSys(Bike,AP));0.000;0.000
+ModeMinorStu;3;1;0.000;-0.040;Impedance car;0.000;Matrix([Code]="IMP" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(Imp_Car());0.000;0.000
+ModeMinorStu;4;1;0.000;0.000;Impedance car passenger;-0.020;Matrix([Code]="TTC" & [DSegCode]="C" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PrTShortestPathImpedance(TCur_Car());0.000;0.000
+ModeMinorStu;5;1;0.000;0.000;Impedance PT;0.000;Matrix([Code]="IPD" & [DSegCode]="PT" & [FromTime] = CONTEXT[FromTime] & [ToTime] = CONTEXT[ToTime]);1;PuTShortestPathImpedance(PT_SA);-0.060;0.000
+ModeMinorStu;6;1;0.000;0.000;travel time walk;0.000;Matrix([Code]="TT0" & [DSegCode]="W");1;DirectDistance();0.000;-0.100
+ModeMinorStu;7;(1-[Schedule\Person\DrivingLicense]);0.100;-999999.000;No car as driver availability (incl. no driver license);0.400;;1;;-0.050;0.000
+ModeMinorStu;8;[Schedule\Person\Household\NOCars]=0;-0.100;-4.000;No car in household: car mode nearly not possible;-3.000;;1;;0.300;0.000
+ModeMinorStu;10;1;0.500;-0.500;inner traffic bonus/malus;-1.000;;Matrix([Code]="InnerTraffic");;0.000;1.000
+ModeMinorStu;11;[Schedule\Person\Is_Prim_Pupil];1.000;-999999.000;Mode specific constant primary pupils;-2.000;;;;1.000;4.000
+ModeMinorStu;12;[Schedule\Person\edu_type]>1;1.000;-2.000;Mode specific constant students;-3.000;;1;;1.000;3.500
+
+* 
+* Table: Table entries: PrimLocAdult
+* 
+$TABLEENTRIES_PRIMLOCADULT:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR
+PrimLocAdult;1;0.6*([CarAvail]=1);CarAv;Matrix([Code]="LogSumCarAv")
+PrimLocAdult;2;0.8*([CarAvail]=0);NoCarAv;Matrix([Code]="LogSumNoCarAv")
+
+* 
+* Table: Table entries: PrimLocStu
+* 
+$TABLEENTRIES_PRIMLOCSTU:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;MATRIXEXPR
+PrimLocStu;1;0.9 * [Is_Prim_Pupil];primary pupil;Matrix([Code]="LogSumNoCarAv")
+PrimLocStu;2;0.8 * [Is_Sec_Pupil];secondary pupil;Matrix([Code]="LogSumNoCarAv")
+PrimLocStu;3;0.6*([CarAvail]=1) * ([edu_type]>=3);CarAv, university student or apprentice;Matrix([Code]="LogSumCarAv")
+PrimLocStu;4;0.7*([CarAvail]=0) * ([edu_type]>=3);NoCarAv, university student or apprentice;Matrix([Code]="LogSumNoCarAv")
+
+* 
+* Table: Table entries: StartTime
+* 
+$TABLEENTRIES_STARTTIME:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;TIMESERIESNO
+StartTime;1;([ActivityCode]="E1");Primary school;104
+StartTime;2;([ActivityCode]="E2");Secondary school;105
+StartTime;3;([ActivityCode]="E3");Apprentice;106
+StartTime;4;([ActivityCode]="E4");University as student;107
+StartTime;5;([ActivityCode]="W") * ([Schedule\Person\empl_pct]>=80) * ([Schedule\Count:Tours] =1);Full-time employee with 1 tour;111
+StartTime;6;([ActivityCode]="W") * ([Schedule\Person\empl_pct]>=80) * ([Schedule\Count:Tours]>=2);Full-time employee with 2 or more tours;112
+StartTime;7;([ActivityCode]="W") * ([Schedule\Person\empl_pct]>=40)* ([Schedule\Person\empl_pct]<80) * ([Schedule\Count:Tours]=1);High-hour employee with 1 tour;109
+StartTime;8;([ActivityCode]="W") * ([Schedule\Person\empl_pct]>=40)* ([Schedule\Person\empl_pct]<80) * ([Schedule\Count:Tours]>=2);High-hour employee with 2 or more tours;110
+StartTime;9;([ActivityCode]="W") * ([Schedule\Person\empl_pct]<40);Low-hour employee;108
+StartTime;10;([ActivityCode]="S");Shopping;103
+StartTime;11;([ActivityCode]="L");Leisure;101
+StartTime;12;([ActivityCode]="O");Other;102
+
+* 
+* Table: Table entries: StopFreqInbE
+* 
+$TABLEENTRIES_STOPFREQINBE:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqInbE;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+StopFreqInbE;2;1;alternative specific constant;0.000;-1.671;-2.724;-3.790
+StopFreqInbE;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.025;-0.027;-0.026
+StopFreqInbE;4;[Schedule\Person\empl_pct];employment;0.000;0.001;-0.001;0.000
+StopFreqInbE;5;[Schedule\Person\age]<18;child;0.000;-0.840;-1.180;-0.881
+StopFreqInbE;6;[Schedule\Person\age]>=65;retired;0.000;-0.094;-0.335;-0.422
+StopFreqInbE;7;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.000;-0.008;-0.006
+StopFreqInbE;8;[Schedule\Person\carAvail];car availability;0.000;0.207;0.196;0.278
+
+* 
+* Table: Table entries: StopFreqInbO
+* 
+$TABLEENTRIES_STOPFREQINBO:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqInbO;1;ChoiceID;Alternative;1.000;2.000;3.000;4.000
+StopFreqInbO;2;1;alternative specific constant;0.000;-2.218;-3.328;-4.195
+StopFreqInbO;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.007;-0.008;-0.008
+StopFreqInbO;4;[Schedule\Person\empl_pct];employment;0.000;-0.001;0.001;0.003
+StopFreqInbO;5;LN([Schedule\Person\age]);log(age);0.000;0.145;0.076;0.032
+StopFreqInbO;6;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.002;0.026;-0.010
+StopFreqInbO;7;[Schedule\Person\carAvail];car availability;0.000;0.071;0.232;0.497
+
+* 
+* Table: Table entries: StopFreqInbW
+* 
+$TABLEENTRIES_STOPFREQINBW:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqInbW;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+StopFreqInbW;2;1;alternative specific constant;0.000;-1.448;-2.600;-3.583
+StopFreqInbW;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.025;-0.027;-0.026
+StopFreqInbW;4;[Schedule\Person\empl_pct];employment;0.000;0.001;-0.001;0.000
+StopFreqInbW;5;[Schedule\Person\age]<18;child;0.000;-0.840;-1.180;-0.881
+StopFreqInbW;6;[Schedule\Person\age]>=65;retired;0.000;-0.094;-0.335;-0.422
+StopFreqInbW;7;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.000;-0.008;-0.006
+StopFreqInbW;8;[Schedule\Person\carAvail];car availability;0.000;0.207;0.196;0.278
+
+* 
+* Table: Table entries: StopFreqOutbE
+* 
+$TABLEENTRIES_STOPFREQOUTBE:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqOutbE;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+StopFreqOutbE;2;1;alternative specific constant;0.000;-2.663;-4.346;-5.532
+StopFreqOutbE;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.005;-0.005;-0.001
+StopFreqOutbE;4;[Schedule\Person\empl_pct];employment;0.000;-0.004;-0.009;0.001
+StopFreqOutbE;5;[Schedule\Person\age]<18;child;0.000;-1.106;-1.849;-1.781
+StopFreqOutbE;6;[Schedule\Person\age]>=65;retired;0.000;-0.172;-0.559;-0.209
+StopFreqOutbE;7;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.394;0.390;0.040
+StopFreqOutbE;8;[Schedule\Person\carAvail];car availability;0.000;0.067;0.528;1.081
+
+* 
+* Table: Table entries: StopFreqOutbO
+* 
+$TABLEENTRIES_STOPFREQOUTBO:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqOutbO;1;ChoiceID;Alternative;1.000;2.000;3.000;4.000
+StopFreqOutbO;2;1;alternative specific constant;0.000;-2.218;-3.328;-4.195
+StopFreqOutbO;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.007;-0.008;-0.008
+StopFreqOutbO;4;[Schedule\Person\empl_pct];employment;0.000;-0.001;0.001;0.003
+StopFreqOutbO;5;LN([Schedule\Person\age]);log(age);0.000;0.145;0.076;0.032
+StopFreqOutbO;6;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.002;0.026;-0.010
+StopFreqOutbO;7;[Schedule\Person\carAvail];car availability;0.000;0.071;0.232;0.497
+
+* 
+* Table: Table entries: StopFreqOutbW
+* 
+$TABLEENTRIES_STOPFREQOUTBW:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+StopFreqOutbW;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+StopFreqOutbW;2;1;alternative specific constant;0.000;-1.997;-4.002;-6.103
+StopFreqOutbW;3;[Schedule\COUNT:Tours];no of tours;0.000;-0.005;-0.005;-0.001
+StopFreqOutbW;4;[Schedule\Person\empl_pct];employment;0.000;-0.004;-0.009;0.001
+StopFreqOutbW;5;[Schedule\Person\age]<18;child;0.000;-1.106;-1.849;-1.781
+StopFreqOutbW;6;[Schedule\Person\age]>=65;retired;0.000;-0.172;-0.559;-0.209
+StopFreqOutbW;7;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;0.394;0.390;0.040
+StopFreqOutbW;8;[Schedule\Person\carAvail];car availability;0.000;0.067;0.528;1.081
+
+* 
+* Table: Table entries: SubFreqE
+* 
+$TABLEENTRIES_SUBFREQE:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2
+SubFreqE;1;ChoiceID;Alternative;0.000;1.000;2.000
+SubFreqE;2;[Schedule\Person\is_pupil];pupil;0.000;2.306;2.306
+SubFreqE;3;[Schedule\Person\is_apprentice];apprentice;0.000;0.313;0.313
+SubFreqE;4;[Schedule\Person\is_student];student;0.000;0.635;0.635
+SubFreqE;5;[Schedule\Person\empl_pct];employment;0.000;0.009;0.009
+SubFreqE;6;[Schedule\Person\carAvail];car availability;0.000;0.329;0.329
+SubFreqE;8;[Schedule\COUNT:Tours];no of tours;0.000;-0.774;-0.774
+SubFreqE;9;[inb_stops]+[outb_stops];number of stops;0.000;-0.010;-0.010
+SubFreqE;10;LN([Schedule\Person\age]);log(age);0.000;-0.141;-0.141
+SubFreqE;11;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;-0.096;-0.096
+SubFreqE;12;1;alternative specific constant;0.000;-3.542;-5.000
+
+* 
+* Table: Table entries: SubFreqW
+* 
+$TABLEENTRIES_SUBFREQW:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2
+SubFreqW;1;ChoiceID;Alternative;0.000;1.000;2.000
+SubFreqW;2;[Schedule\Person\is_pupil];pupil;0.000;2.306;2.306
+SubFreqW;3;[Schedule\Person\is_apprentice];apprentice;0.000;0.313;0.313
+SubFreqW;4;[Schedule\Person\is_student];student;0.000;0.635;0.635
+SubFreqW;5;[Schedule\Person\empl_pct];employment;0.000;0.009;0.009
+SubFreqW;6;[Schedule\Person\carAvail];car availability;0.000;0.329;0.329
+SubFreqW;8;[Schedule\COUNT:Tours];no of tours;0.000;-0.774;-0.774
+SubFreqW;9;[inb_stops]+[outb_stops];number of stops;0.000;-0.010;-0.010
+SubFreqW;10;LN([Schedule\Person\age]);log(age);0.000;-0.141;-0.141
+SubFreqW;11;[Schedule\Person\Household\COUNT:Persons([AGE]<18)]>0;has child;0.000;-0.096;-0.096
+SubFreqW;12;1;alternative specific constant;0.000;-3.542;-5.000
+
+* 
+* Table: Table entries: TourFreqE
+* 
+$TABLEENTRIES_TOURFREQE:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+TourFreqE;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+TourFreqE;2;1;alternative specific constant;-0.881;0.000;-1.149;-2.000
+TourFreqE;3;[empl_pct];employment in %;0.013;0.000;0.006;0.006
+TourFreqE;4;[is_apprentice];apprentice;0.423;0.000;-6.121;-6.121
+TourFreqE;5;[is_student];student;0.310;0.000;-2.489;-2.489
+TourFreqE;6;LN([age]);logarithm of age;0.281;0.000;0.651;0.651
+
+* 
+* Table: Table entries: TourFreqO
+* 
+$TABLEENTRIES_TOURFREQO:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+TourFreqO;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+TourFreqO;2;1;alternative specific constant;0.000;0.530;-0.448;-1.929
+TourFreqO;3;[Sum:Schedules\Count:Tours];number of tours;0.000;-0.686;-1.685;-2.333
+TourFreqO;4;([empl_pct]>0)*([empl_pct]<40);part-time employee < 40%;0.000;0.017;0.113;0.200
+TourFreqO;5;([empl_pct]>=40)*([empl_pct]<80);part-time employee < 80%;0.000;-0.318;-0.205;-0.258
+TourFreqO;6;([empl_pct]>=80);full-time employee > 80%;0.000;-0.695;-0.942;-1.269
+TourFreqO;7;[is_pupil];pupil;0.000;0.294;0.587;0.411
+TourFreqO;8;[is_apprentice];apprentice;0.000;0.120;0.411;0.683
+TourFreqO;9;[is_student];student;0.000;-0.366;-0.418;-0.590
+TourFreqO;10;([age]>=18)*([age]<25);young adult;0.000;0.136;0.127;0.335
+TourFreqO;11;([age]>=25)*([age]<65);adult;0.000;0.120;0.330;1.111
+TourFreqO;12;([age]>=65)*([age]<75);retired;0.000;0.170;0.416;1.039
+TourFreqO;13;([age]>=75);old retired;0.000;0.283;0.514;0.765
+TourFreqO;14;[Household\COUNT:Persons([AGE]<18)]>0;household with children;0.000;0.068;0.289;0.534
+TourFreqO;15;[carAvail];car available;0.000;0.198;0.640;0.915
+
+* 
+* Table: Table entries: TourFreqW
+* 
+$TABLEENTRIES_TOURFREQW:TABLEDEFINITIONNAME;NO;ATTREXPR;COMMENT;RESULT0;RESULT1;RESULT2;RESULT3
+TourFreqW;1;ChoiceID;Alternative;0.000;1.000;2.000;3.000
+TourFreqW;2;1;alternative specific constant;2.222;0.000;-1.139;-2.000
+TourFreqW;3;[empl_pct];employment in %;-0.022;0.000;0.012;0.012
+TourFreqW;4;([age]>=18)*([age]<25);young adult;-0.699;0.000;-0.948;-0.948
+TourFreqW;5;([age]>=25)*([age]<65);adult;-1.002;0.000;-1.160;-1.160
+TourFreqW;6;([age]>=65);retired;-0.175;0.000;-0.812;-0.812
+TourFreqW;7;[Household\COUNT:Persons([AGE]<18)]>0;household with children;0.026;0.000;0.249;0.249
+TourFreqW;8;[carAvail];car available;0.035;0.000;0.249;0.249
+
