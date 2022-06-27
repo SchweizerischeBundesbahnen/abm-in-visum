@@ -1,0 +1,55 @@
+﻿$VISION
+* Visum Inhouse License (Productive)
+* 01/21/22
+* 
+* Table: Version block
+* 
+$VERSION:VERSNR;FILETYPE;LANGUAGE;UNIT
+13.000;Net;ENG;KM
+
+
+* 
+* Table: User-defined attributes
+* 
+$USERATTDEF:OBJID;ATTID;CODE;NAME;VALUETYPE;MINVALUE;MAXVALUE;DEFAULTVALUE;DEFAULTSTRINGVALUE;COMMENT;MAXSTRINGLENGTH;NUMDECPLACES;DATASOURCETYPE;FORMULA;SCALEDBYLENGTH;CROSSSECTIONLOGIC;CSLIGNORECLOSED;SUBATTRS;CANBEEMPTY;OPERATIONREFERENCE
+NETWORK;CURRENTTIMEINTERVALBEGIN;CurrentTimeIntervalBegin;CurrentTimeIntervalBegin;TimePoint;0.000;MAX;0.000;;;0;0;Data;;0;SUM;0;;0;
+NETWORK;CURRENTTIMEINTERVALEND;CurrentTimeIntervalEnd;CurrentTimeIntervalEnd;TimePoint;0.000;MAX;0.000;;;0;0;Data;;0;SUM;0;;0;
+MODE;ID;ID;ID;Int;MIN;MAX;0.000;;identifier of the mode, used in the choice models;0;0;Data;;0;SUM;0;;1;
+MODE;RANK;Rank;Rank;Int;MIN;MAX;0.000;;the major mode of tours with interchangeable modes is the used mode with highest rank.;0;0;Data;;0;SUM;0;;0;
+NODE;CONNECTOR_BIKE;connector_Bike;connector_Bike;Bool;0.000;1.000;0.000;;node which is suited to connect a location to the bike mode;0;0;Data;;0;MAX;0;;0;
+NODE;CONNECTOR_CAR;connector_Car;connector_Car;Bool;0.000;1.000;0.000;;node which is suited to connect a location to the car mode;0;0;Data;;0;MAX;0;;0;
+NODE;CONNECTOR_CAR_PASS;connector_Car_Pass;connector_Car_Pass;Bool;0.000;1.000;0.000;;node which is suited to connect a location to the car passenger mode;0;0;Data;;0;MAX;0;;0;
+NODE;CONNECTOR_PT;connector_PT;connector_PT;Bool;0.000;1.000;0.000;;node which is suited to connect a location to the PT mode;0;0;Data;;0;MAX;0;;0;
+ACTIVITY;ID;ID;ID;Int;MIN;MAX;0.000;;Identifier of the activity, used in the choice models;0;0;Data;;0;SUM;0;;1;
+ACTIVITY;PRIMLOCDISTATTR;PrimLocDistAttr;PrimLocDistAttr;LongText;0.000;0.000;;;Name of the person attribute that contains the distance to the primary activity.;2147483647;0;Data;;0;SUM;0;;0;
+LOCATION;PERSONS;Persons;Persons;Double;MIN;MAX;;;;0;0;Formula;[SUM:ACTIVITYLOCATIONS\COUNT:PERSONSWITHHOUSEHOLD];0;SUM;0;;1;
+LOCATION;PLAYGROUND;Playground;Playground;Bool;0.000;1.000;0.000;;;0;0;Data;;0;MAX;0;;0;
+TOUR;INB_STOPS;Inbound_stops;Inbound_stops;Int;MIN;MAX;0.000;;number of inbound (to home) stops;0;0;Data;;0;SUM;0;;1;
+TOUR;IS_PRIMARY;Is primary;Is primary;Bool;0.000;1.000;0.000;;true=tour is primary tour;0;0;Data;;0;MAX;0;;1;
+TOUR;MAJORACTEXINDEX;MajorActExIndex;MajorActExIndex;Int;MIN;MAX;0.000;;index of the major activity execution among all activity executions of the person;0;0;Data;;0;SUM;0;;0;
+TOUR;MAJORACTIVITYZONENO;MajorActivityZoneNo;MajorActivityZoneNo;Int;MIN;MAX;0.000;;zone number of the major activity;0;0;Data;;0;SUM;0;;0;
+TOUR;MAJORMODEIDOFSUBTOUR;MajorModeIDOfSubtour;MajorModeIDOfSubtour;Int;MIN;MAX;0.000;;ID of major mode of subtour;0;0;Data;;0;SUM;0;;0;
+TOUR;ORDER_NO;Order_no;Order_no;Int;MIN;MAX;;;position of the tour in the chronological order;0;0;Data;;0;SUM;0;;1;
+TOUR;OUTB_STOPS;Outbound_stops;Outbound_stops;Int;MIN;MAX;0.000;;number of outbound (from home) stops;0;0;Data;;0;SUM;0;;1;
+TOUR;PRIMTOURMAJORACTIVITYID;PrimTourMajorActivityID;PrimTourMajorActivityID;Int;MIN;MAX;0.000;;ID of the major activity in case of a primary tour;0;0;Data;;0;SUM;0;;1;
+TOUR;STARTTIMECHOICE_ORDER_NO;StartTimeChoice_order_no;StartTimeChoice_order_no;Int;MIN;MAX;;;position in the order of start time choice;0;0;Data;;0;SUM;0;;1;
+TOUR;SUBTOUR_STOPS;subtour_stops;subtour_stops;Int;MIN;MAX;0.000;;number of intermediate stops in the subtour;0;0;Data;;0;SUM;0;;1;
+TOUR;TOT_STOPS;Total_stops;Total_stops;Int;MIN;MAX;;;total number of stops;0;0;Formula;[INB_STOPS]+[OUTB_STOPS]+[SUBTOUR_STOPS];0;SUM;0;;1;
+ACTIVITYEXECUTION;ISMAJORACTIVITY;IsMajorActivity;IsMajorActivity;Bool;0.000;1.000;0.000;;true=it is the major activity of it's tour;0;0;Data;;0;MAX;0;;0;
+ACTIVITYEXECUTION;ISPARTOFSUBTOUR;IsPartOfSubtour;IsPartOfSubtour;Bool;0.000;1.000;0.000;;true=it is part of a subtour;0;0;Data;;0;MAX;0;;0;
+ACTIVITYEXECUTION;MINORDESTANDMODECHOICESEQINDEX;MinorDestAndModeChoiceSeqIndex;MinorDestAndModeChoiceSeqIndex;Int;MIN;MAX;0.000;;index within the sequence of stops between major and home activity;0;0;Data;;0;SUM;0;;0;
+HOUSEHOLD;NOCARS;NOCars;Number of cars;Int;MIN;MAX;0.000;;number of cars in the household;0;0;Data;;0;SUM;0;;0;
+HOUSEHOLD;ORIGINALHHID;OriginalHouseholdID;original household ID;Int;MIN;MAX;0.000;;original household ID;0;0;Data;;0;SUM;0;;0;
+PERSON;AGE;Age;Age;Int;MIN;MAX;0.000;;age in years;0;2;Data;;0;SUM;0;;1;
+PERSON;CARAVAIL;CarAvail;Car availability;Bool;0.000;1.000;;;;0;0;Formula;[DRIVINGLICENSE] * ([HOUSEHOLD\NOCARS]>0);0;MAX;0;;1;
+PERSON;CAR_DIST_EDU;Car distance education;Car distance education;Double;MIN;MAX;0.000;;car distance in [km] from home to education location;0;2;Data;;0;SUM;0;;1;
+PERSON;CAR_DIST_WORK;Car distance work;Car distance work;Double;MIN;MAX;0.000;;car distance in [km] from home to work location;0;2;Data;;0;SUM;0;;1;
+PERSON;DRIVINGLICENSE;DrivingLicense;DrivingLicense;Int;0.000;1.000;0.000;;driving licence: 1=yes, 0=no;0;0;Data;;0;MAX;0;;1;
+PERSON;EDU_TYPE;Education type;Education type;Int;MIN;MAX;;;education type: 0=no student, 1=primary students, 2=secondary students, 3=apprentices, 4=university students;0;2;Formula;if([IS_PRIM_PUPIL]:1:\\nif([IS_SEC_PUPIL]:2:\\nif([IS_APPRENTICE]:3:\\nif([IS_STUDENT]:4:0))));0;SUM;0;;1;
+PERSON;EMPL_PCT;Employment percent;Employment percent;Int;MIN;MAX;0.000;;degree of employment (percentage): 100 = full time worker;0;2;Data;;0;SUM;0;;1;
+PERSON;IS_APPRENTICE;Is apprentice;Is apprentice;Int;MIN;MAX;0.000;;1=person is apprentice, 0=person is not apprentice;0;2;Data;;0;SUM;0;;1;
+PERSON;IS_PRIM_PUPIL;Is primary pupil;Is primary pupil;Int;MIN;MAX;0.000;;1=person is primary pupil, 0=person is not primary pupil;0;2;Data;;0;SUM;0;;1;
+PERSON;IS_PUPIL;Is pupil;Is pupil;Int;MIN;MAX;;;1=person is pupil, 0=person is not pupil;0;2;Formula;[IS_PRIM_PUPIL]|[IS_SEC_PUPIL];0;SUM;0;;1;
+PERSON;IS_SEC_PUPIL;Is secondary pupil;Is secondary pupil;Int;MIN;MAX;0.000;;1=person is secondary pupil, 0=person is not secondary pupil;0;2;Data;;0;SUM;0;;1;
+PERSON;IS_STUDENT;Is student;Is student;Int;MIN;MAX;0.000;;1=person is university student, 0=person is not university student;0;2;Data;;0;SUM;0;;1;
+PERSON;ORIGINALPERSONID;OriginalPersonID;original person ID from HHI survey;Text;MIN;MAX;;;;255;0;Data;;0;SUM;0;;0;
