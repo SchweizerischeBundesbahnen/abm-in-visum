@@ -2,5 +2,5 @@ dask==2021.10.0
 distributed==2021.10.0
 numpy==1.22.0
 pandas==0.25.0
-setuptools==40.8.0
+setuptools==65.5.1
 VisumPy==2021
