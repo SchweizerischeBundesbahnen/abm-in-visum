@@ -3,4 +3,3 @@ distributed==2021.10.0
 numpy==1.22.0
 pandas==0.25.0
 setuptools==40.8.0
-VisumPy==2021
